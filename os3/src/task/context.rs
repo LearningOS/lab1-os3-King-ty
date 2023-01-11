@@ -1,5 +1,8 @@
+//! Implementation of [`TaskContext`]
+
 #[derive(Copy, Clone)]
 #[repr(C)]
+/// task context structure containing some registers
 pub struct TaskContext {
     ra: usize,
     sp: usize,
@@ -8,13 +11,12 @@ pub struct TaskContext {
 
 impl TaskContext {
     pub fn zero_init() -> Self {
-        TaskContext {
+        Self {
             ra: 0,
             sp: 0,
             s: [0; 12],
         }
     }
-
     pub fn goto_restore(kstack_ptr: usize) -> Self {
         extern "C" {
             fn __restore();

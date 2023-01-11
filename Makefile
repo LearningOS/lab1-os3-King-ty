@@ -35,7 +35,7 @@ test2: setup
 	cd ${DIR}/ci-user && make test CHAPTER=2
 
 test3: setup
-	cp -r os3-test ${DIR}/os
+	cp -r os3 ${DIR}/os
 	cd ${DIR}/ci-user && make test CHAPTER=3
 
 test4: setup

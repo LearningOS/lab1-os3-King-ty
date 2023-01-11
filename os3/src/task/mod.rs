@@ -14,9 +14,6 @@ mod switch;
 #[allow(clippy::module_inception)]
 mod task;
 
-use core::char::MAX;
-use std::thread::{current, panicking};
-
 use crate::config::{MAX_APP_NUM, MAX_SYSCALL_NUM};
 use crate::loader::{get_num_app, init_app_cx};
 use crate::sync::UPSafeCell;
@@ -109,7 +106,7 @@ impl TaskManager {
 
     fn run_next_task(&self) {
         if let Some(next) = self.find_next_task() {
-            let inner = self.inner.exclusive_access();
+            let mut inner = self.inner.exclusive_access();
             let current = inner.current_task;
             inner.tasks[next].task_status = TaskStatus::Running;
             inner.current_task = next;

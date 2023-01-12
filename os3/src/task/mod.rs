@@ -56,7 +56,7 @@ lazy_static! {
             task_cx: TaskContext::zero_init(),
             task_status: TaskStatus::UnInit,
             syscall_times: [0; MAX_SYSCALL_NUM],
-            init_time:0
+            init_time: 0,
         }; MAX_APP_NUM];
         for (i, t) in tasks.iter_mut().enumerate().take(num_app) {
             t.task_cx = TaskContext::goto_restore(init_app_cx(i));

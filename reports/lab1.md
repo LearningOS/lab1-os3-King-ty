@@ -5,6 +5,7 @@
 4. 在`TaskManager`及`task/mod.rs`中添加`add_syscall_times`,`get_syscall_times`,`get_task_time`,`get_status`等接口
 5. 在`syscall`函数中调用`add_syscall_times`更新`syscall_times`
 6. 完成`sys_task_info`系统调用实现
+7. 设置`entry.asm`中的`boot_stack`，调大一倍
 
 # 完成问答题
 
